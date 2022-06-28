@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Execute command with current git repository information available via Environment variables
+
+function main() {
+	# Execute the passing command
+	# Otherwise just print out the variable to tty
+	if [[ -n "$@" ]]; then
+		exec env `git-env` $@
+	else
+		echo "git: please specify a command to run."
+		echo ""
+		echo "Example:"
+		echo -e "\tgit exec do-something"
+		exit 1
+	fi
+}
+
+main "$@"
