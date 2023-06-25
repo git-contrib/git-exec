@@ -3,8 +3,6 @@
 # Execute command with current git repository information available via Environment variables
 
 function main() {
-	# Execute the passing command
-	# Otherwise just print out the variable to tty
 	if [[ -n "$@" ]]; then
 		exec env `git-env` $@
 	else
